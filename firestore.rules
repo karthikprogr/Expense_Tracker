@@ -1,0 +1,100 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is authenticated
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check if user owns the resource
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+    
+    // Helper function to validate transaction data
+    function isValidTransaction() {
+      let data = request.resource.data;
+      return data.keys().hasAll(['type', 'category', 'amount', 'description', 'date', 'userId', 'createdAt'])
+        && data.type is string
+        && (data.type == 'income' || data.type == 'expense')
+        && data.category is string
+        && data.category.size() > 0
+        && data.amount is number
+        && data.amount > 0
+        && data.description is string
+        && data.userId is string
+        && data.userId == request.auth.uid;
+    }
+    
+    // Helper function to validate transaction update
+    function isValidTransactionUpdate() {
+      let data = request.resource.data;
+      return data.type is string
+        && (data.type == 'income' || data.type == 'expense')
+        && data.category is string
+        && data.category.size() > 0
+        && data.amount is number
+        && data.amount > 0
+        && data.description is string
+        && data.userId is string
+        && data.userId == request.auth.uid;
+    }
+    
+    // Users Collection Rules
+    match /users/{userId} {
+      // Allow read if authenticated and owner
+      allow read: if isSignedIn() && isOwner(userId);
+      
+      // Allow create only if authenticated and creating own document
+      allow create: if isSignedIn() && isOwner(userId);
+      
+      // Allow update only if authenticated and owner
+      allow update: if isSignedIn() && isOwner(userId);
+      
+      // Deny delete (users should be deleted through Firebase Auth)
+      allow delete: if false;
+    }
+    
+    // Transactions Collection Rules
+    match /transactions/{transactionId} {
+      // Allow read if authenticated and owner
+      allow read: if isSignedIn() && isOwner(resource.data.userId);
+      
+      // Allow create if authenticated, owner, and data is valid
+      allow create: if isSignedIn() 
+        && isOwner(request.resource.data.userId)
+        && isValidTransaction();
+      
+      // Allow update if authenticated, owner, and data is valid
+      allow update: if isSignedIn() 
+        && isOwner(resource.data.userId)
+        && isOwner(request.resource.data.userId)
+        && isValidTransactionUpdate();
+      
+      // Allow delete if authenticated and owner
+      allow delete: if isSignedIn() && isOwner(resource.data.userId);
+    }
+    
+    // Budget Collection Rules (optional for future use)
+    match /budgets/{budgetId} {
+      allow read: if isSignedIn() && isOwner(resource.data.userId);
+      allow create: if isSignedIn() && isOwner(request.resource.data.userId);
+      allow update: if isSignedIn() && isOwner(resource.data.userId);
+      allow delete: if isSignedIn() && isOwner(resource.data.userId);
+    }
+    
+    // Categories Collection Rules (optional for future use)
+    match /categories/{categoryId} {
+      allow read: if isSignedIn() && isOwner(resource.data.userId);
+      allow create: if isSignedIn() && isOwner(request.resource.data.userId);
+      allow update: if isSignedIn() && isOwner(resource.data.userId);
+      allow delete: if isSignedIn() && isOwner(resource.data.userId);
+    }
+    
+    // Deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
