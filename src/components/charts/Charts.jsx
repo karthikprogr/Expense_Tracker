@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pie, Line } from 'react-chartjs-2';
+import { Pie, Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   ArcElement,
@@ -9,6 +9,7 @@ import {
   LinearScale,
   PointElement,
   LineElement,
+  BarElement,
   Title,
 } from 'chart.js';
 import { groupByCategory, getMonthlyData } from '../../utils/calculations';
@@ -22,6 +23,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  BarElement,
   Title
 );
 
@@ -81,30 +83,30 @@ function Charts({ transactions }) {
     },
   };
 
-  // Prepare line chart data
+  // Prepare bar chart data for monthly comparison
   const monthlyData = getMonthlyData(transactions);
   
-  const lineChartData = {
+  const barChartData = {
     labels: monthlyData.map(d => d.month),
     datasets: [
       {
         label: 'Income',
         data: monthlyData.map(d => d.income),
+        backgroundColor: 'rgba(75, 192, 192, 0.8)',
         borderColor: 'rgba(75, 192, 192, 1)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        tension: 0.4,
+        borderWidth: 1,
       },
       {
         label: 'Expenses',
         data: monthlyData.map(d => d.expenses),
+        backgroundColor: 'rgba(255, 99, 132, 0.8)',
         borderColor: 'rgba(255, 99, 132, 1)',
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        tension: 0.4,
+        borderWidth: 1,
       },
     ],
   };
 
-  const lineChartOptions = {
+  const barChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -164,38 +166,38 @@ function Charts({ transactions }) {
         </div>
       )}
 
-      {/* Monthly Trends Line Chart */}
+      {/* Monthly Trends Bar Chart */}
       {monthlyData.length > 0 && (
         <div className="card">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight">
             📈 Monthly Income vs Expenses
           </h2>
-          <div className="h-80">
-            <Line data={lineChartData} options={lineChartOptions} />
+          <div className="h-64 sm:h-80">
+            <Bar data={barChartData} options={barChartOptions} />
           </div>
           
-          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-              <p className="text-sm text-gray-600 dark:text-gray-400">Avg Income</p>
-              <p className="text-xl font-bold text-green-600 dark:text-green-400">
+          <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-3 sm:gap-4">
+            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 sm:p-4">
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-1">Avg Income</p>
+              <p className="text-base sm:text-xl font-bold text-green-600 dark:text-green-400 break-all">
                 ${(monthlyData.reduce((sum, d) => sum + d.income, 0) / monthlyData.length).toFixed(2)}
               </p>
             </div>
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-              <p className="text-sm text-gray-600 dark:text-gray-400">Avg Expenses</p>
-              <p className="text-xl font-bold text-red-600 dark:text-red-400">
+            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 sm:p-4">
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-1">Avg Expenses</p>
+              <p className="text-base sm:text-xl font-bold text-red-600 dark:text-red-400 break-all">
                 ${(monthlyData.reduce((sum, d) => sum + d.expenses, 0) / monthlyData.length).toFixed(2)}
               </p>
             </div>
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-              <p className="text-sm text-gray-600 dark:text-gray-400">Best Month</p>
-              <p className="text-xl font-bold text-blue-600 dark:text-blue-400">
+            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 sm:p-4">
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-1">Best Month</p>
+              <p className="text-base sm:text-xl font-bold text-blue-600 dark:text-blue-400">
                 {monthlyData.reduce((max, d) => d.income > max.income ? d : max, monthlyData[0])?.month}
               </p>
             </div>
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-              <p className="text-sm text-gray-600 dark:text-gray-400">Tracking</p>
-              <p className="text-xl font-bold text-purple-600 dark:text-purple-400">
+            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 sm:p-4">
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-1">Tracking</p>
+              <p className="text-base sm:text-xl font-bold text-purple-600 dark:text-purple-400">
                 {monthlyData.length} months
               </p>
             </div>

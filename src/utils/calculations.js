@@ -42,9 +42,12 @@ export const groupByCategory = (transactions) => {
  * Get monthly data for charts
  */
 export const getMonthlyData = (transactions, year = new Date().getFullYear()) => {
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  
   const monthlyData = Array(12)
     .fill(0)
-    .map(() => ({
+    .map((_, index) => ({
+      month: monthNames[index],
       income: 0,
       expenses: 0,
     }));
