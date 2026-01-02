@@ -25,23 +25,23 @@ function BalanceSummary({ transactions }) {
     {
       title: 'Total Expenses',
       amount: totalExpenses,
-      icon: <FaCreditCard className="text-red-600 dark:text-red-400" />,
+      icon: <FaCreditCard className="text-red-600 dark:text-red-300" />,
       color: 'red',
       bgColor: 'bg-red-50 dark:bg-red-900',
-      textColor: 'text-red-600 dark:text-red-400',
+      textColor: 'text-red-600 dark:text-red-200',
       borderColor: 'border-red-200 dark:border-red-700',
     },
     {
       title: 'Net Balance',
       amount: netBalance,
-      icon: netBalance >= 0 ? <FaArrowUp className="text-blue-600 dark:text-blue-400" /> : <FaArrowDown className="text-orange-600 dark:text-orange-400" />,
+      icon: netBalance >= 0 ? <FaArrowUp className="text-blue-600 dark:text-blue-400" /> : <FaArrowDown className="text-orange-600 dark:text-orange-300" />,
       color: netBalance >= 0 ? 'blue' : 'orange',
       bgColor: netBalance >= 0 
         ? 'bg-blue-50 dark:bg-blue-900' 
         : 'bg-orange-50 dark:bg-orange-900',
       textColor: netBalance >= 0 
         ? 'text-blue-600 dark:text-blue-400' 
-        : 'text-orange-600 dark:text-orange-400',
+        : 'text-orange-600 dark:text-orange-200',
       borderColor: netBalance >= 0 
         ? 'border-blue-200 dark:border-blue-700' 
         : 'border-orange-200 dark:border-orange-700',

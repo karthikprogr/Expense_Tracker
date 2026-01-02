@@ -14,8 +14,8 @@ export const ThemeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(() => {
     // Check localStorage for saved theme preference
     const savedTheme = localStorage.getItem('theme');
-    // Default to light mode if no preference is saved
-    return savedTheme === 'dark' ? true : false;
+    // Default to dark mode if no preference is saved
+    return savedTheme === 'light' ? false : true;
   });
 
   useEffect(() => {
