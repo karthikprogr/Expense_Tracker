@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
+import { FaChartBar, FaChartPie, FaChartLine } from 'react-icons/fa';
 import {
   Chart as ChartJS,
   ArcElement,
@@ -140,7 +141,7 @@ function Charts({ transactions }) {
     return (
       <div className="card">
         <div className="text-center py-12">
-          <div className="text-6xl mb-4">📊</div>
+          <FaChartBar className="text-6xl mb-4 mx-auto text-gray-400" />
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
             No Data to Display
           </h3>
@@ -158,7 +159,7 @@ function Charts({ transactions }) {
       {expenses.length > 0 && (
         <div className="card">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
-            📊 Expense Distribution by Category
+            <FaChartPie className="inline mr-2" /> Expense Distribution by Category
           </h2>
           <div className="h-80">
             <Pie data={pieChartData} options={pieChartOptions} />
@@ -170,7 +171,7 @@ function Charts({ transactions }) {
       {monthlyData.length > 0 && (
         <div className="card">
           <h2 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight">
-            📈 Monthly Income vs Expenses
+            <FaChartLine className="inline mr-2" /> Monthly Income vs Expenses
           </h2>
           <div className="h-64 sm:h-80">
             <Bar data={barChartData} options={barChartOptions} />

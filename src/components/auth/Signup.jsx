@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
-import { FaGoogle, FaEnvelope, FaLock, FaUser, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaGoogle, FaEnvelope, FaLock, FaUser, FaEye, FaEyeSlash, FaWallet } from 'react-icons/fa';
 
 function Signup() {
   const [formData, setFormData] = useState({

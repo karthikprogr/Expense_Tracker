@@ -5,6 +5,7 @@ import {
   calculateTotalExpenses, 
   calculateNetBalance 
 } from '../../utils/calculations';
+import { FaMoneyBillWave, FaTrendingUp, FaTrendingDown, FaCreditCard } from 'react-icons/fa';
 
 function BalanceSummary({ transactions }) {
   const totalIncome = calculateTotalIncome(transactions);
@@ -15,7 +16,7 @@ function BalanceSummary({ transactions }) {
     {
       title: 'Total Income',
       amount: totalIncome,
-      icon: '💰',
+      icon: <FaMoneyBillWave />,
       color: 'green',
       bgColor: 'bg-green-50 dark:bg-green-900',
       textColor: 'text-green-600 dark:text-green-400',
@@ -24,7 +25,7 @@ function BalanceSummary({ transactions }) {
     {
       title: 'Total Expenses',
       amount: totalExpenses,
-      icon: '💸',
+      icon: <FaCreditCard />,
       color: 'red',
       bgColor: 'bg-red-50 dark:bg-red-900',
       textColor: 'text-red-600 dark:text-red-400',
@@ -33,7 +34,7 @@ function BalanceSummary({ transactions }) {
     {
       title: 'Net Balance',
       amount: netBalance,
-      icon: netBalance >= 0 ? '📈' : '📉',
+      icon: netBalance >= 0 ? <FaTrendingUp /> : <FaTrendingDown />,
       color: netBalance >= 0 ? 'blue' : 'orange',
       bgColor: netBalance >= 0 
         ? 'bg-blue-50 dark:bg-blue-900' 

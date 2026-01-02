@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { INCOME_CATEGORIES, EXPENSE_CATEGORIES } from '../../utils/constants';
+import { FaChartBar, FaMoneyBillWave, FaCreditCard } from 'react-icons/fa';
 
 function Filters({ onFilterChange, currentFilters }) {
   const [showFilters, setShowFilters] = useState(false);
@@ -116,7 +117,13 @@ function Filters({ onFilterChange, currentFilters }) {
                       : 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
                   }`}
                 >
-                  {type === 'all' ? '📊 All' : type === 'income' ? '💰 Income' : '💸 Expense'}
+                  {type === 'all' ? (
+                    <><FaChartBar className="inline mr-2" /> All</>
+                  ) : type === 'income' ? (
+                    <><FaMoneyBillWave className="inline mr-2" /> Income</>
+                  ) : (
+                    <><FaCreditCard className="inline mr-2" /> Expense</>
+                  )}
                 </button>
               ))}
             </div>

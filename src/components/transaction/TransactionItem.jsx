@@ -1,31 +1,32 @@
 import React from 'react';
 import { formatCurrency, formatDate } from '../../utils/formatters';
+import { FaBriefcase, FaLaptop, FaChartLine, FaGift, FaUtensils, FaShoppingCart, FaBus, FaGamepad, FaFilm, FaHospital, FaBook, FaPlane, FaHome, FaMoneyBillWave, FaEdit, FaTrash } from 'react-icons/fa';
 
 function TransactionItem({ transaction, onEdit, onDelete }) {
   const isIncome = transaction.type === 'income';
   
   const getCategoryIcon = (category) => {
-    const icons = {
+    const iconMap = {
       // Income
-      Salary: '💼',
-      Freelance: '💻',
-      Investment: '📈',
-      Gift: '🎁',
-      Other: '💵',
+      Salary: <FaBriefcase />,
+      Freelance: <FaLaptop />,
+      Investment: <FaChartLine />,
+      Gift: <FaGift />,
+      Other: <FaMoneyBillWave />,
       
       // Expense
-      Food: '🍔',
-      Transport: '�',
-      Transportation: '💰',
-      Shopping: '🛍️',
-      Entertainment: '🎮',
-      Bills: '📄',
-      Healthcare: '🏥',
-      Education: '📚',
-      Travel: '✈️',
-      Rent: '🏠',
+      Food: <FaUtensils />,
+      Transport: <FaBus />,
+      Transportation: <FaBus />,
+      Shopping: <FaShoppingCart />,
+      Entertainment: <FaGamepad />,
+      Bills: <FaMoneyBillWave />,
+      Healthcare: <FaHospital />,
+      Education: <FaBook />,
+      Travel: <FaPlane />,
+      Rent: <FaHome />,
     };
-    return icons[category] || '💰';
+    return iconMap[category] || <FaMoneyBillWave />;
   };
 
   return (
@@ -70,14 +71,14 @@ function TransactionItem({ transaction, onEdit, onDelete }) {
             className="p-1.5 sm:p-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900 rounded-lg transition-colors"
             title="Edit transaction"
           >
-            ✏️
+            <FaEdit />
           </button>
           <button
             onClick={() => onDelete(transaction.id)}
             className="p-1.5 sm:p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900 rounded-lg transition-colors"
             title="Delete transaction"
           >
-            🗑️
+            <FaTrash />
           </button>
         </div>
       </div>

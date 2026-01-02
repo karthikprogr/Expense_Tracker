@@ -4,6 +4,7 @@ import { addTransaction, updateTransaction } from '../../services/transactionSer
 import { toast } from 'react-toastify';
 import { INCOME_CATEGORIES, EXPENSE_CATEGORIES, TRANSACTION_TYPES } from '../../utils/constants';
 import { validateTransaction } from '../../utils/validation';
+import { FaMoneyBillWave, FaCreditCard } from 'react-icons/fa';
 
 function TransactionForm({ editTransaction, onSuccess, onCancel }) {
   const { currentUser } = useAuth();
@@ -132,7 +133,7 @@ function TransactionForm({ editTransaction, onSuccess, onCancel }) {
                   : 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
               }`}
             >
-              💸 Expense
+              <FaCreditCard className="inline mr-2" /> Expense
             </button>
             <button
               type="button"
@@ -143,7 +144,7 @@ function TransactionForm({ editTransaction, onSuccess, onCancel }) {
                   : 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
               }`}
             >
-              💰 Income
+              <FaMoneyBillWave className="inline mr-2" /> Income
             </button>
           </div>
         </div>
@@ -230,8 +231,10 @@ function TransactionForm({ editTransaction, onSuccess, onCancel }) {
           {loading 
             ? 'Saving...' 
             : editTransaction 
-              ? '💾 Update Transaction' 
-              : `${formData.type === 'income' ? '💰' : '💸'} Add ${formData.type === 'income' ? 'Income' : 'Expense'}`
+              ? <><FaMoneyBillWave className="inline mr-2" /> Update Transaction</> 
+              : formData.type === 'income' 
+                ? <><FaMoneyBillWave className="inline mr-2" /> Add Income</>
+                : <><FaCreditCard className="inline mr-2" /> Add Expense</>
           }
         </button>
       </form>

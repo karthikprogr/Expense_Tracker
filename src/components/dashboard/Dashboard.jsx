@@ -8,6 +8,7 @@ import Filters from '../filters/Filters';
 import Charts from '../charts/Charts';
 import ExportImport from '../settings/ExportImport';
 import Settings from '../settings/Settings';
+import { FaHome, FaChartBar, FaFileExport, FaCog, FaWallet, FaBriefcase } from 'react-icons/fa';
 
 function Dashboard() {
   const { currentUser, logout } = useAuth();
@@ -91,10 +92,10 @@ function Dashboard() {
   };
 
   const tabs = [
-    { id: 'dashboard', label: '🏠 Dashboard', icon: '🏠', shortLabel: 'Dashboard' },
-    { id: 'analytics', label: '📊 Analytics', icon: '📊', shortLabel: 'Analytics' },
-    { id: 'export', label: '💾 Export/Import', icon: '💾', shortLabel: 'Export' },
-    { id: 'settings', label: '⚙️ Settings', icon: '⚙️', shortLabel: 'Settings' },
+    { id: 'dashboard', label: 'Dashboard', icon: <FaHome />, shortLabel: 'Dashboard' },
+    { id: 'analytics', label: 'Analytics', icon: <FaChartBar />, shortLabel: 'Analytics' },
+    { id: 'export', label: 'Export/Import', icon: <FaFileExport />, shortLabel: 'Export' },
+    { id: 'settings', label: 'Settings', icon: <FaCog />, shortLabel: 'Settings' },
   ];
 
   // Loading Screen
@@ -105,7 +106,7 @@ function Dashboard() {
           {/* Logo */}
           <div className="mb-8 animate-bounce">
             <div className="inline-block bg-gradient-to-br from-blue-500 to-purple-600 p-6 rounded-2xl shadow-2xl">
-              <span className="text-6xl">💰</span>
+              <FaWallet className="text-6xl text-white" />
             </div>
           </div>
           
@@ -140,7 +141,7 @@ function Dashboard() {
             {/* Logo and Title */}
             <div className="flex items-center gap-3">
               <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-2.5 rounded-lg shadow-lg">
-                <span className="text-2xl">💰</span>
+                <FaWallet className="text-2xl text-white" />
               </div>
               <div className="flex flex-col">
                 <h1 className="text-2xl font-bold text-white leading-tight">
@@ -248,7 +249,8 @@ function Dashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="text-center text-sm text-gray-600 dark:text-gray-400">
             <p className="mb-2">
-              💼 <strong>Expense Tracker</strong> - UM Internship Project
+              <FaBriefcase className="inline mr-2" />
+              <strong>Expense Tracker</strong> - UM Internship Project
             </p>
             <p>
               Built with React + Firebase | Full Stack JavaScript (MERN)

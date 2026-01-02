@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { addTransaction } from '../../services/transactionService';
 import { useAuth } from '../../context/AuthContext';
 import { formatDate } from '../../utils/formatters';
+import { FaFileExport, FaFileImport, FaFileDownload, FaFileCsv } from 'react-icons/fa';
 
 function ExportImport({ transactions }) {
   const { currentUser } = useAuth();
@@ -202,7 +203,7 @@ function ExportImport({ transactions }) {
               disabled={!transactions || transactions.length === 0}
               className="w-full btn-primary bg-green-600 hover:bg-green-700 disabled:bg-gray-400"
             >
-              📊 Export as CSV
+              <FaFileCsv className="inline mr-2" /> Export as CSV
             </button>
             
             <button
@@ -210,7 +211,7 @@ function ExportImport({ transactions }) {
               disabled={!transactions || transactions.length === 0}
               className="w-full btn-secondary border-green-600 text-green-600 hover:bg-green-50 dark:border-green-400 dark:text-green-400"
             >
-              📋 Export as JSON
+              <FaFileDownload className="inline mr-2" /> Export as JSON
             </button>
           </div>
 
@@ -249,7 +250,11 @@ function ExportImport({ transactions }) {
                   importing ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
               >
-                {importing ? '⏳ Importing...' : '📁 Choose CSV File'}
+                {importing ? (
+                  <><FaFileImport className="inline mr-2" /> Importing...</>
+                ) : (
+                  <><FaFileImport className="inline mr-2" /> Choose CSV File</>
+                )}
               </label>
             </label>
           </div>
