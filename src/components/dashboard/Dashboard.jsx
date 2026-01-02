@@ -259,11 +259,7 @@ function Dashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="text-center text-sm text-gray-600 dark:text-gray-400">
             <p className="mb-2">
-              <FaBriefcase className="inline mr-2" />
-              <strong>Expense Tracker</strong> - UM Internship Project
-            </p>
-            <p>
-              Built with React + Firebase | Full Stack JavaScript (MERN)
+              © 2026 Seelam Karthik • UM Internship Project
             </p>
             <div className="mt-3 flex justify-center space-x-4">
               <span className="px-3 py-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 rounded-full text-xs">
