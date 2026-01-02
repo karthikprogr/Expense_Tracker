@@ -49,26 +49,26 @@ function BalanceSummary({ transactions }) {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
       {cards.map((card, index) => (
         <div
           key={index}
-          className={`${card.bgColor} ${card.borderColor} border-2 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow backdrop-blur-sm`}
+          className={`${card.bgColor} ${card.borderColor} border-2 rounded-xl p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow backdrop-blur-sm`}
         >
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
+          <div className="flex items-center justify-between mb-2 md:mb-3">
+            <h3 className="text-xs md:text-sm font-bold text-gray-700 dark:text-gray-200 uppercase tracking-wide">
               {card.title}
             </h3>
-            <span className="text-3xl">{card.icon}</span>
+            <span className="text-2xl md:text-3xl">{card.icon}</span>
           </div>
           
-          <div className={`text-3xl font-bold ${card.textColor}`}>
+          <div className={`text-2xl md:text-3xl font-extrabold ${card.textColor}`}>
             {formatCurrency(Math.abs(card.amount))}
           </div>
 
           {card.title === 'Net Balance' && (
-            <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
-              <p className="text-xs text-gray-600 dark:text-gray-400">
+            <div className="mt-2 md:mt-3 pt-2 md:pt-3 border-t border-gray-200 dark:border-gray-700">
+              <p className="text-xs font-semibold text-gray-600 dark:text-gray-300">
                 {netBalance >= 0 
                   ? '✅ You\'re in positive balance!' 
                   : '⚠️ Expenses exceed income'
