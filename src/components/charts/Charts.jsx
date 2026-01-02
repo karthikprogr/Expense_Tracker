@@ -68,6 +68,7 @@ function Charts({ transactions }) {
           font: {
             size: 12,
           },
+          color: '#9CA3AF',
         },
       },
       tooltip: {
@@ -113,6 +114,9 @@ function Charts({ transactions }) {
     plugins: {
       legend: {
         position: 'top',
+        labels: {
+          color: '#9CA3AF',
+        },
       },
       title: {
         display: false,
@@ -126,12 +130,24 @@ function Charts({ transactions }) {
       },
     },
     scales: {
+      x: {
+        ticks: {
+          color: '#9CA3AF',
+        },
+        grid: {
+          color: '#374151',
+        },
+      },
       y: {
         beginAtZero: true,
         ticks: {
+          color: '#9CA3AF',
           callback: function(value) {
             return '$' + value;
           },
+        },
+        grid: {
+          color: '#374151',
         },
       },
     },

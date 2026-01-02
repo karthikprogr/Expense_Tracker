@@ -115,8 +115,12 @@ function TransactionForm({ editTransaction, onSuccess, onCancel }) {
   return (
     <div className="card">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-          {editTransaction ? '✏️ Edit Transaction' : '➕ Add Transaction'}
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+          {editTransaction ? (
+            <><span className="text-blue-600 dark:text-blue-400">✏️</span> Edit Transaction</>
+          ) : (
+            <><span className="text-green-600 dark:text-green-400">➕</span> Add Transaction</>
+          )}
         </h2>
         {editTransaction && (
           <button

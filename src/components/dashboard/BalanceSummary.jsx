@@ -53,7 +53,7 @@ function BalanceSummary({ transactions }) {
       {cards.map((card, index) => (
         <div
           key={index}
-          className={`${card.bgColor} ${card.borderColor} border-2 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow`}
+          className={`${card.bgColor} ${card.borderColor} border-2 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow backdrop-blur-sm`}
         >
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
