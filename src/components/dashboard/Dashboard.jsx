@@ -92,10 +92,10 @@ function Dashboard() {
   };
 
   const tabs = [
-    { id: 'dashboard', label: 'Dashboard', icon: <FaHome />, shortLabel: 'Dashboard' },
-    { id: 'analytics', label: 'Analytics', icon: <FaChartBar />, shortLabel: 'Analytics' },
-    { id: 'export', label: 'Export/Import', icon: <FaFileExport />, shortLabel: 'Export' },
-    { id: 'settings', label: 'Settings', icon: <FaCog />, shortLabel: 'Settings' },
+    { id: 'dashboard', label: 'Dashboard', icon: <FaHome />, shortLabel: 'Dashboard', color: 'text-blue-600' },
+    { id: 'analytics', label: 'Analytics', icon: <FaChartBar />, shortLabel: 'Analytics', color: 'text-green-600' },
+    { id: 'export', label: 'Export/Import', icon: <FaFileExport />, shortLabel: 'Export', color: 'text-purple-600' },
+    { id: 'settings', label: 'Settings', icon: <FaCog />, shortLabel: 'Settings', color: 'text-orange-600' },
   ];
 
   // Loading Screen

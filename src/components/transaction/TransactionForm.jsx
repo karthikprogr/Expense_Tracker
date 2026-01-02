@@ -133,7 +133,7 @@ function TransactionForm({ editTransaction, onSuccess, onCancel }) {
                   : 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
               }`}
             >
-              <FaCreditCard className="inline mr-2" /> Expense
+              <FaCreditCard className="inline mr-2 text-white" /> Expense
             </button>
             <button
               type="button"
@@ -144,7 +144,7 @@ function TransactionForm({ editTransaction, onSuccess, onCancel }) {
                   : 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
               }`}
             >
-              <FaMoneyBillWave className="inline mr-2" /> Income
+              <FaMoneyBillWave className="inline mr-2 text-white" /> Income
             </button>
           </div>
         </div>

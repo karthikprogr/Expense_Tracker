@@ -159,7 +159,7 @@ function Charts({ transactions }) {
       {expenses.length > 0 && (
         <div className="card">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
-            <FaChartPie className="inline mr-2" /> Expense Distribution by Category
+            <FaChartPie className="inline mr-2 text-pink-600" /> Expense Distribution by Category
           </h2>
           <div className="h-80">
             <Pie data={pieChartData} options={pieChartOptions} />
@@ -171,7 +171,7 @@ function Charts({ transactions }) {
       {monthlyData.length > 0 && (
         <div className="card">
           <h2 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight">
-            <FaChartLine className="inline mr-2" /> Monthly Income vs Expenses
+            <FaChartLine className="inline mr-2 text-blue-600" /> Monthly Income vs Expenses
           </h2>
           <div className="h-64 sm:h-80">
             <Bar data={barChartData} options={barChartOptions} />

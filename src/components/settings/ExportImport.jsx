@@ -203,7 +203,7 @@ function ExportImport({ transactions }) {
               disabled={!transactions || transactions.length === 0}
               className="w-full btn-primary bg-green-600 hover:bg-green-700 disabled:bg-gray-400"
             >
-              <FaFileCsv className="inline mr-2" /> Export as CSV
+              <FaFileCsv className="inline mr-2 text-white" /> Export as CSV
             </button>
             
             <button
@@ -211,7 +211,7 @@ function ExportImport({ transactions }) {
               disabled={!transactions || transactions.length === 0}
               className="w-full btn-secondary border-green-600 text-green-600 hover:bg-green-50 dark:border-green-400 dark:text-green-400"
             >
-              <FaFileDownload className="inline mr-2" /> Export as JSON
+              <FaFileDownload className="inline mr-2 text-green-600" /> Export as JSON
             </button>
           </div>
 
@@ -251,9 +251,9 @@ function ExportImport({ transactions }) {
                 }`}
               >
                 {importing ? (
-                  <><FaFileImport className="inline mr-2" /> Importing...</>
+                  <><FaFileImport className="inline mr-2 text-white" /> Importing...</>
                 ) : (
-                  <><FaFileImport className="inline mr-2" /> Choose CSV File</>
+                  <><FaFileImport className="inline mr-2 text-white" /> Choose CSV File</>
                 )}
               </label>
             </label>

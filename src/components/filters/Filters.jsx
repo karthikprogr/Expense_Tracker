@@ -118,11 +118,11 @@ function Filters({ onFilterChange, currentFilters }) {
                   }`}
                 >
                   {type === 'all' ? (
-                    <><FaChartBar className="inline mr-2" /> All</>
+                    <><FaChartBar className="inline mr-2 text-white" /> All</>
                   ) : type === 'income' ? (
-                    <><FaMoneyBillWave className="inline mr-2" /> Income</>
+                    <><FaMoneyBillWave className="inline mr-2 text-white" /> Income</>
                   ) : (
-                    <><FaCreditCard className="inline mr-2" /> Expense</>
+                    <><FaCreditCard className="inline mr-2 text-white" /> Expense</>
                   )}
                 </button>
               ))}

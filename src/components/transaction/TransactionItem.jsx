@@ -8,25 +8,25 @@ function TransactionItem({ transaction, onEdit, onDelete }) {
   const getCategoryIcon = (category) => {
     const iconMap = {
       // Income
-      Salary: <FaBriefcase />,
-      Freelance: <FaLaptop />,
-      Investment: <FaChartLine />,
-      Gift: <FaGift />,
-      Other: <FaMoneyBillWave />,
+      Salary: <FaBriefcase className="text-blue-600" />,
+      Freelance: <FaLaptop className="text-purple-600" />,
+      Investment: <FaChartLine className="text-green-600" />,
+      Gift: <FaGift className="text-pink-600" />,
+      Other: <FaMoneyBillWave className="text-teal-600" />,
       
       // Expense
-      Food: <FaUtensils />,
-      Transport: <FaBus />,
-      Transportation: <FaBus />,
-      Shopping: <FaShoppingCart />,
-      Entertainment: <FaGamepad />,
-      Bills: <FaMoneyBillWave />,
-      Healthcare: <FaHospital />,
-      Education: <FaBook />,
-      Travel: <FaPlane />,
-      Rent: <FaHome />,
+      Food: <FaUtensils className="text-orange-600" />,
+      Transport: <FaBus className="text-yellow-600" />,
+      Transportation: <FaBus className="text-yellow-600" />,
+      Shopping: <FaShoppingCart className="text-pink-600" />,
+      Entertainment: <FaGamepad className="text-purple-600" />,
+      Bills: <FaMoneyBillWave className="text-red-600" />,
+      Healthcare: <FaHospital className="text-red-600" />,
+      Education: <FaBook className="text-blue-600" />,
+      Travel: <FaPlane className="text-sky-600" />,
+      Rent: <FaHome className="text-indigo-600" />,
     };
-    return iconMap[category] || <FaMoneyBillWave />;
+    return iconMap[category] || <FaMoneyBillWave className="text-gray-600" />;
   };
 
   return (
@@ -71,14 +71,14 @@ function TransactionItem({ transaction, onEdit, onDelete }) {
             className="p-1.5 sm:p-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900 rounded-lg transition-colors"
             title="Edit transaction"
           >
-            <FaEdit />
+            <FaEdit className="text-blue-600" />
           </button>
           <button
             onClick={() => onDelete(transaction.id)}
             className="p-1.5 sm:p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900 rounded-lg transition-colors"
             title="Delete transaction"
           >
-            <FaTrash />
+            <FaTrash className="text-red-600" />
           </button>
         </div>
       </div>
