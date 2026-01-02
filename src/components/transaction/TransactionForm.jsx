@@ -26,6 +26,15 @@ function TransactionForm({ editTransaction, onSuccess, onCancel }) {
         description: editTransaction.description,
         date: editTransaction.date,
       });
+    } else {
+      // Reset form when editTransaction is null (after cancel or success)
+      setFormData({
+        type: 'expense',
+        category: 'Food',
+        amount: '',
+        description: '',
+        date: new Date().toISOString().split('T')[0],
+      });
     }
   }, [editTransaction]);
 
