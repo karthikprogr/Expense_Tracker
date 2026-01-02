@@ -29,7 +29,23 @@ function Login() {
       navigate('/');
     } catch (error) {
       console.error('Login error:', error);
-      toast.error(error.message || 'Failed to login');
+      
+      // Provide more user-friendly error messages
+      let errorMessage = 'Failed to login';
+      
+      if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
+        errorMessage = '❌ Invalid email or password. Please check your credentials and try again.';
+      } else if (error.code === 'auth/user-not-found') {
+        errorMessage = '❌ No account found with this email. Please sign up first.';
+      } else if (error.code === 'auth/too-many-requests') {
+        errorMessage = '⏱️ Too many failed attempts. Please try again later or reset your password.';
+      } else if (error.code === 'auth/network-request-failed') {
+        errorMessage = '📡 Network error. Please check your internet connection.';
+      } else {
+        errorMessage = error.message || 'Failed to login';
+      }
+      
+      toast.error(errorMessage, { autoClose: 5000 });
     } finally {
       setLoading(false);
     }
