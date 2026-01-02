@@ -84,6 +84,13 @@ function Dashboard() {
 
   const handleEditTransaction = (transaction) => {
     setEditingTransaction(transaction);
+    // Scroll to transaction form after a short delay to ensure state is updated
+    setTimeout(() => {
+      const formElement = document.getElementById('transaction-form');
+      if (formElement) {
+        formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
   };
 
   const handleTransactionSuccess = () => {
@@ -208,7 +215,7 @@ function Dashboard() {
             {/* Two Column Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Transaction Form */}
-              <div className="lg:col-span-1">
+              <div className="lg:col-span-1" id="transaction-form">
                 <TransactionForm
                   editTransaction={editingTransaction}
                   onSuccess={handleTransactionSuccess}
