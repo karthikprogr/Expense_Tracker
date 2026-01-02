@@ -25,6 +25,11 @@ function Dashboard() {
     endDate: '',
   });
 
+  // Scroll to top when changing tabs
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeTab]);
+
   // Load transactions
   useEffect(() => {
     if (!currentUser) return;
