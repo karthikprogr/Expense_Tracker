@@ -84,7 +84,6 @@ function Dashboard() {
 
   const handleEditTransaction = (transaction) => {
     setEditingTransaction(transaction);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleTransactionSuccess = () => {
