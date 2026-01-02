@@ -176,11 +176,10 @@ function Dashboard() {
               </div>
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-lg font-semibold transition-colors shadow-md whitespace-nowrap"
+                className="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95 whitespace-nowrap"
                 title="Logout"
               >
-                <span>🚪</span>
-                <span>Logout</span>
+                Logout
               </button>
             </div>
           </div>
